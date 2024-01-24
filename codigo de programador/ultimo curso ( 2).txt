@@ -1,0 +1,46 @@
+let numeroSecreto = generarNumeroSecreto();
+let intentos = 1;
+
+function asignaTextoElemento(elemento, texto){
+    let elementoHTML = document.querySelector(elemento);
+    elementoHTML.innerHTML = texto;
+    return;
+}
+
+function verificarIntento() {
+    let numeroDeUsuario = parseInt(document.getElementById("valorUsuario").value);
+  
+
+     if(numeroDeUsuario === numeroSecreto) {
+        asignaTextoElemento("p",`Acertaste el numero en ${intentos} ${(intentos === 1) ? "vez" : "veces"}`);
+        document.getElementById("reiniciar").removeAttribute("disabled");
+        } else{
+
+        if (numeroDeUsuario > numeroSecreto) {
+            asignaTextoElemento("p","el numero secreto es menor");   
+        } else{
+            asignaTextoElemento("p","el numero secreto es mayor"); 
+        }
+        intentos++;
+        limpiarCaja();
+     }
+    return;
+}
+
+function limpiarCaja(){
+   document.querySelector("#valorUsuario").value = "";
+}
+
+function generarNumeroSecreto(params) {
+    return Math.floor (Math.random()*10)+1;
+}
+
+function reiniciarJuego(){
+    // limpiar caja 
+    //indicar mensaje de inter valo de numeros
+    //generar el numero aleatorio
+    //deshabilitar el boton nuevo juego
+    //inicializar el numero de intentos
+}
+ asignaTextoElemento("h1","juego del numero secreto!");
+ asignaTextoElemento("p","indica un numero del 1 al 10");
